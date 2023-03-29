@@ -7,7 +7,7 @@
         <h1>Records....</h1>
         <table class="table table-striped-columns table-hover table-bordered table-sm">
             <thead class="table-dark">
-            <tr >
+            <tr>
                 <th scope="col">Id</th>
                 <th scope="col">name</th>
                 <th scope="col">Email</th>
@@ -23,14 +23,14 @@
             {% if records %}
                 {% for record in records %}
                     <tr>
-                       <td> {{ record.id }}</td>
-                       <td> {{ record.first_name }}
-                        {{ record.last_name }}</td>
-                       <td> {{ record.email }}</td>
-                       <td> {{ record.phone }}</td>
-                       <td> {{ record.address }}</td>
-                       <td> {{ record.city }}</td>
-                       <td> {{ record.state }}</td>
+                        <td><a href="{% url 'record' record.id %}"> {{ record.id }}</a></td>
+                        <td> {{ record.first_name }}
+                            {{ record.last_name }}</td>
+                        <td> {{ record.email }}</td>
+                        <td> {{ record.phone }}</td>
+                        <td> {{ record.address }}</td>
+                        <td> {{ record.city }}</td>
+                        <td> {{ record.state }}</td>
                         <td>{{ record.create_at }}</td>
                         <td>{{ record.zipcode }}</td>
                     </tr>
@@ -43,22 +43,23 @@
 
 
     {% else %}
-
-        <h1> Login</h1>
-        <br/>
-        <form method="POST" action="{% url 'home' %}">
-            {% csrf_token %}
-
-            <div class="mb-3">
-                <input type="text" class="form-control" name="username" placeholder="请输入用户名" required>
-            </div>
+        <div class="col-md-6 offset-md-3">
+            <h1> Login</h1>
             <br/>
-            <div class="mb-3">
-                <input type="password" class="form-control" name="password" placeholder="请输入密码" required>
-            </div>
-            <br/>
-            <button type="submit" class="btn btn-secondary">log in</button>
-        </form>
+            <form method="POST" action="{% url 'home' %}">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="username" placeholder="请输入用户名" required>
+                </div>
+                <br/>
+                <div class="mb-3">
+                    <input type="password" class="form-control" name="password" placeholder="请输入密码" required>
+                </div>
+                <br/>
+                <button type="submit" class="btn btn-secondary">log in</button>
+            </form>
+        </div>
 
 
 
