@@ -26,3 +26,7 @@ def logout_user(request):
     logout(request)
     messages.success(request, "恭喜您，已经成功退出")
     return redirect('home')
+
+
+def register_user(request):
+    return render(request, 'register.html', {})
